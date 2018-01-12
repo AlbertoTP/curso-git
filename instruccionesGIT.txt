@@ -1,0 +1,113 @@
+Atom utilizar plugin "gist"
+
+git init //crea repositorio local
+git add //agrega en el escenario
+git add "*.txt" //agrega todos los txt de todo el proyecto
+git add *.txt //agrega todos los txt del directorio actual
+git reset <archivo> //quita del add
+git reset --soft HEAD^ //deshace el ultimo commit
+git reset --mixed <id> //regresa en el tiempo borrando los commit archivos NO(solo stage)
+git reset --hard <id> //regresa en el tiempo borrando cambios
+git reflog //historial completo de git
+git commit //crea registro historico
+git commit -m "mensaje"
+git commit -am "mensaje" //agregar todos los archivos al stage
+git commit --amend -m "mensaje nuevo" //cambia el mensaje del ultimo commit
+
+git pull <origin> <rama> //actualiza los cambios desde github (descarga, merge)
+git fetch //no hace merge de forma automatica
+git clone https://github.com/AlbertoTP/ejemplo000.git //clona repositorio
+git clone <url> <nombre> //asigna nombre al clonar
+
+git diff //cambios del archivo
+git diff --staged //cambios en el escenarios
+git checkout -- <archivo> //regresa el archivo en su forma original
+
+git status //estado de archivos
+git status -s -b //estado de archivos una linea
+-s silence
+-b branch
+git checkout -- . //recupera los archivos
+git checkout <nombre-rama> //cambia de rama
+git checkout -b <rama> //crea rama
+git log //codigo hash hitorial de commits
+git log --oneline //muestra en una linea
+git log --oneline --decorate --all --graph
+
+git branch //muestra las ramas existentes
+git branch -a //muestra todas las ramas
+git branch <nombre-rama> //crea nueva rama
+Merge Fast Forward
+git merge <rama>//para unir una rama a otra(se tiene que estar donde se copiara)
+git merge -d <rama>//borra una rama
+Merge Union auomatica
+git checkout -b <rama> //crea la rama y cambia a direccion
+git merge <rama>//para unir una rama a otra(se tiene que estar donde se copiara)
+
+git remote prune origin //limpia ramas que ya no existen
+
+git config --global alias.lg "log --oneline --decorate --al --graph" //crea alias
+git lg
+
+.gitignore //ignora archivos
+
+git mv <nombreOriginal> <nombreModificado> //cambia nombre
+git rm <archivo> //borra archivo
+
+Renombrando un archivo fuera de git; git pensara que se elimino y se creo uno nuevo
+git add -u //actualizar
+git add -A
+
+git tag //muestra los tag existentes
+git tag <tag>//crea una etiqueta
+git tag -a <tag> <codigo> -m "<mensaje"//crea tag con mensaje en el codigo hash
+git tag -d <tag>//borra tag
+git show <tag> //muestra los detalles donde tiene el tag
+
+git push --tags
+
+>>>>>>>>>>> Repositorio local y agregar origen remoto
+git remote add origin https://github.com/AlbertoTP/ejemplo000.git
+// add.- agrega nuevo remote, origin.- nombre de nuestro remote, direccion
+//origin, upstream es un estandar para referirnos al origen
+git remote -v //revisar las fuentes remotas agregadas al repositorio
+git push -u origin master
+//origin.- nombre del repositorio, master.- rama que deseamos enviar
+//-u.- nos ayuda que la proxima vez no especifiquemos la rama
+
+>>>>>>>>>>> stash
+git stash //salva y restaura, guarda WIP(work in progress) y regresa a ultimo commit
+git stash save
+git stash save "<mensaje>"
+git shash list//lista todos los stash
+git stash pop //regresa a el ultimo WIP y lo borra de la lista (en conflictos no borra)
+git stash apply //restaura WIP pero no borra
+git stash apply stash@{<num>} //restaura un stash en particular
+git stash drop //borra el primer stash
+git stash drop stash@{<num>} //borra el stash num
+git stash clear //borra todas las entradas que hay en el stash
+
+git stash save --keep-index //guarda todo menos los archivos en el stage
+git stash save --include-untracked //incluye todos los archivos, junto a los que git no le da seguimiento
+git show stash/stash@{<num>} //muestra ultimo registro que se hizo en el stash
+
+>>>>>>>>>>> Rebase mover los cambios de la rama despues de la ultima modificacion en master
+git checkout <rama> //mover a rama
+git rebase <master> //mueve los commits de la rama antes de los commits de master
+git checkout <master> //moverse a master
+git merge <rama> //hacer merge y actualiza master con la rama
+
+git rebase -i HEAD~<num> //fusiona commits
+abre editor para fusionar commits, utilizar s para fusionar con el de arriba
+abre editor para cambiar mensaje de commit
+
+>>>>>>>>>>> Rebase con Reword cambiar mensaje
+git rebase -i HEAD~<num> //en num es el numero de commits a modificar
+poner r de reword para editar el commit
+abrira otra pantalla para editar el mensaje del commit
+>>>>>>>>>>> Rebase con edit cambiar mensaje de un commit a varios
+git rebase -i HEAD~<num>
+git reset HEAD^
+git add <archivo>
+git commit -m <mensaje>
+...
