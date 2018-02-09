@@ -75,6 +75,13 @@ git push -u origin master
 //origin.- nombre del repositorio, master.- rama que deseamos enviar
 //-u.- nos ayuda que la proxima vez no especifiquemos la rama
 
+>>>>>>>>>>> fatal: refusing to merge unrelated histories
+git remote add origin <repository url>
+git pull origin master --allow-unrelated-histories
+git merge origin origin/master
+... add and commit here...
+git push origin master
+
 >>>>>>>>>>> stash
 git stash //salva y restaura, guarda WIP(work in progress) y regresa a ultimo commit
 git stash save
